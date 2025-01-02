@@ -1,0 +1,75 @@
+---
+import { Sun, Moon } from 'lucide-react';
+---
+
+<button
+  id="theme-toggle"
+  type="button"
+  class="theme-toggle p-2 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 transition-colors duration-400"
+  aria-label="Toggle theme"
+>
+  <Sun id="theme-toggle-light-icon" className="w-6 h-6" />
+  <Moon id="theme-toggle-dark-icon" className="w-6 h-6" />
+</button>
+
+<script>
+  const LIGHT_THEME = 'light';
+  const DARK_THEME = 'dark';
+
+  function setTheme(theme: string) {
+    document.documentElement.classList.toggle(DARK_THEME, theme === DARK_THEME);
+    localStorage.setItem('theme', theme);
+    updateIconVisibility(theme);
+  }
+
+  function updateIconVisibility(theme: string) {
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    
+    if (lightIcon && darkIcon) {
+      lightIcon.classList.toggle('hidden', theme !== LIGHT_THEME);
+      darkIcon.classList.toggle('hidden', theme !== DARK_THEME);
+    }
+  }
+
+  function toggleTheme() {
+    const currentTheme = localStorage.getItem('theme') || LIGHT_THEME;
+    const newTheme = currentTheme === LIGHT_THEME ? DARK_THEME : LIGHT_THEME;
+    setTheme(newTheme);
+  }
+
+  function initializeTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = savedTheme || (prefersDark ? DARK_THEME : LIGHT_THEME);
+    setTheme(initialTheme);
+  }
+
+  function setupThemeToggle() {
+    const themeToggle = document.querySelector('.theme-toggle');
+    if (themeToggle) {
+      themeToggle.addEventListener('click', toggleTheme);
+    }
+  }
+
+  // Initialize theme on page load
+  document.addEventListener('astro:page-load', () => {
+    initializeTheme();
+    setupThemeToggle();
+  });
+
+  // Handle theme when navigating between pages
+  document.addEventListener('astro:after-swap', () => {
+    initializeTheme();
+    setupThemeToggle();
+  });
+
+  // Update theme when OS preference changes
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+      setTheme(e.matches ? DARK_THEME : LIGHT_THEME);
+    }
+  });
+</script>
+
+

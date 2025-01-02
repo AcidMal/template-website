@@ -1,0 +1,73 @@
+---
+import { Discord, X, Steam, Instagram, Github } from 'simple-icons-astro';
+
+interface Props {
+  className?: string;
+}
+
+const { className = '' } = Astro.props;
+---
+
+<div class:list={["flex space-x-4", className]}>
+
+  <!-- Twitter -->
+  <a
+    href="https://twitter.com/<Your Twitter Username>"
+    class="social-button"
+    aria-label="X"
+  >
+    <X className="w-5 h-5" />
+  </a>
+
+  <!-- Instagram -->
+  <a
+    href="https://instagram.com/<Your Instagram Username>"
+    class="social-button"
+    aria-label="Instagram"
+  >
+    <Instagram className="w-5 h-5" />
+  </a>
+
+  <!-- Discord -->
+  <a
+    href="https://discord.com/<Your Discord ID>"
+    class="social-button"
+    aria-label="Discord"
+  >
+    <Discord className="w-5 h-5" />
+ </a>
+
+  <!-- GitHub -->
+  <a
+    href="https://github.com/<Your GitHub Username>"
+    class="social-button"
+    aria-label="GitHub"
+  >
+    <Github className="w-5 h-5" />
+  </a>
+
+  <!-- Steam -->
+  <a
+    href="https://steamcommunity.com/id/<Your Steam ID>" 
+    class="social-button"
+    aria-label="Steam"
+  >
+    <Steam className="w-5 h-5" />
+  </a>
+
+</div>
+
+<style>
+  .social-button {
+    @apply p-2 rounded-full bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-gray-300 transition-all duration-300;
+    box-shadow: 0 0 0 0 rgba(156, 163, 175, 0);
+  }
+
+  .social-button:hover {
+    @apply bg-gray-400 dark:bg-gray-600;
+    box-shadow: 0 0 20px 0 rgba(156, 163, 175, 0.5);
+    transform: translateY(-2px);
+  }
+</style>
+
+

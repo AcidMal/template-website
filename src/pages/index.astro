@@ -1,0 +1,55 @@
+---
+import Layout from '../layouts/Layout.astro';
+import TwitterFeed from '../components/TwitterFeed';
+---
+
+<Layout title="Home | Your Site">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-4xl font-bold mb-8">Welcome to your Website</h1>
+    <div class="grid gap-8">
+      <section class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+        <h2 class="text-2xl font-bold mb-4">About This Site</h2>
+        <p class="text-gray-600 dark:text-gray-300">
+            This is your website. It may seem empty right now, but it's a great place to start. 
+            You can use this as a place to post your projects, ideas, and rambles. You can use 
+            this as a starting point for your own website.
+        </p>
+      </section>
+
+      <section class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+        <h2 class="text-2xl font-bold mb-4">Add some content!</h2>
+        <p class="text-gray-600 dark:text-gray-300">
+
+          This is a placeholder for your current project. You can use this as a main page for your project. 
+          Feel free to edit this page to fit your needs.
+
+        </p>
+      </section>
+
+      <section class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+	<div class="grid grid-cols-1 gap-4">
+	  <div>
+          <h2 class="text-2xl font-bold mb-4">First Steps</h2>
+          <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-2">
+            <li>Update the title in the <code>src/layouts/Layout.astro</code> file.</li>
+            <li>Change the content in the <code>src/pages/index.astro</code> file.</li>
+            <li>Add more pages to the <code>src/pages/</code> directory.</li>
+	          <li>Need some inspiration? Feel free to check out my site 
+              <a 
+              href="https://acidmal.com" 
+              target="_blank" 
+              class="text-purple-400 ease-in-out duration-300 hover:ease-in-out hover:duration-300 hover:text-purple-600 
+              dark:text-purple-400 hover:ease-in-out hover:duration-300 dark:hover:text-purple-300">Here</a>!</li>
+            </li>
+          </ul>
+	  </div>
+	</div>
+      </section>
+      <section class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+        <TwitterFeed client:load />
+      </section>
+    </div>
+  </div>
+</Layout>
+
+

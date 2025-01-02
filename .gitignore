@@ -1,0 +1,11 @@
+## Packages
+node_modules
+.vercel
+.astro
+
+## Build Output
+dist
+
+## Environment
+# .env is not included in the repository, but you can add it if you need it. 
+# It is used for the Twitter Feed. Since it has my Twitter Bearer Token, make sure to add your own. and keep it private.
